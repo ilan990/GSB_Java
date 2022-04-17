@@ -28,7 +28,7 @@ public class frmBDDVisiteur extends javax.swing.JFrame {
 
    
     /**
-     * @author Dan
+     * @author Ilan
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

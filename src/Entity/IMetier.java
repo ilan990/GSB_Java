@@ -44,7 +44,7 @@ public interface IMetier {
      * 
      *Méthode permettant d'insérer un visiteurs 
      */
-    public void InsererVisiteurs(String nom,String Prenom,String adresse,String cp,String ville,String dateEmbauche,String secteur,String labo,String region);
+    public void InsererVisiteurs(String nom,String Prenom,String adresse,String cp,String ville,String dateEmbauche,String secteur,String labo);
    /**
     * 
     * Méthode permettant d'insérer une régions 
@@ -69,7 +69,7 @@ public interface IMetier {
      * 
      * Méthode permettant de modifier un visiteur
      */
-    public void ModifierVisiteur(int id,String nom, String prenom, String adresse, int cp, String ville, String dateEmbauche, String secteur,String labo,String region);
+    public void ModifierVisiteur(int id,String nom, String prenom, String adresse, int cp, String ville, String dateEmbauche, String secteur,String labo);
     /**
      * 
      * Méthode permettant d'insérer un nouveau responsable lors de l'inscription

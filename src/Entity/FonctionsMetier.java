@@ -41,17 +41,16 @@ public class FonctionsMetier implements IMetier
           try {
             maCnx=ConnexionBdd.getCnx();
             //on ecrit dans le ps la requete
-            ps= maCnx.prepareStatement("SELECT visiteur.id_vis,visiteur.nom_vis,visiteur.prenom_vis,visiteur.adresse_vis,visiteur.CP_vis,visiteur.ville_vis,visiteur.dateEmbauche_vis,secteur.libelle_sec,labo.nom_labo,region.region_nom\n" +
+            ps= maCnx.prepareStatement("SELECT visiteur.id_vis,visiteur.nom_vis,visiteur.prenom_vis,visiteur.adresse_vis,visiteur.CP_vis,visiteur.ville_vis,visiteur.dateEmbauche_vis,secteur.libelle_sec,labo.nom_labo\n" +
 "FROM visiteur \n" +
 "INNER join labo on visiteur.id_labo = labo.id_labo \n" +
-"inner join secteur on visiteur.id_sec=secteur.id_sec\n" +
-"INNER join region on secteur.id_sec = region.id_sec\n" +            
+"inner join secteur on visiteur.id_sec=secteur.id_sec\n" +         
 "order by visiteur.id_vis;");
             rs=ps.executeQuery();
             while(rs.next())
             {
                 Visiteurs vis =new Visiteurs(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getInt(5)
-                        ,rs.getString(6),rs.getDate(7),rs.getString(8),rs.getString(9),rs.getString(10));
+                        ,rs.getString(6),rs.getDate(7),rs.getString(8),rs.getString(9));
                 mesVisiteurs.add(vis);
             }
            
@@ -173,7 +172,7 @@ public class FonctionsMetier implements IMetier
      * La méthode InsererVisiteurs permet d'enregistrer un nouveau visiteur en lui attribuant un nom, un prénom,une adresse,un code postal, une ville, une date d'embauche,un secteur, un laboratoire et une région
      */
     @Override
-    public void InsererVisiteurs(String nom, String Prenom,String adresse ,String cp, String ville,String dateEmbauche, String secteur, String labo,String region) {
+    public void InsererVisiteurs(String nom, String Prenom,String adresse ,String cp, String ville,String dateEmbauche, String secteur, String labo) {
         
         try {
            maCnx=ConnexionBdd.getCnx();
@@ -192,14 +191,10 @@ public class FonctionsMetier implements IMetier
             int numSecteur = rs.getInt(1);
             rs.close();
             
-            ps= maCnx.prepareStatement("select id_region from region where region_nom = '"+region+"'");
-            rs=ps.executeQuery();
-            rs.next();
+         
             
-            int numRegion = rs.getInt(1);
-            rs.close();
             
-            ps= maCnx.prepareStatement("INSERT INTO visiteur VALUES (null,'"+nom+"','"+Prenom+"','"+adresse+"','"+cp+"','"+ville+"','"+dateEmbauche+"',"+numSecteur+","+numLabo+","+numRegion+")");
+            ps= maCnx.prepareStatement("INSERT INTO visiteur VALUES (null,'"+nom+"','"+Prenom+"','"+adresse+"','"+cp+"','"+ville+"','"+dateEmbauche+"',"+numSecteur+","+numLabo+")");
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(FonctionsMetier.class.getName()).log(Level.SEVERE, null, ex);
@@ -249,7 +244,7 @@ public class FonctionsMetier implements IMetier
  * Cette méthode permet de modifier un visiteur déjà existant
  */
     @Override
-    public void ModifierVisiteur(int id,String nom, String prenom, String adresse, int cp, String ville, String dateEmbauche, String secteur,String labo,String region) {
+    public void ModifierVisiteur(int id,String nom, String prenom, String adresse, int cp, String ville, String dateEmbauche, String secteur,String labo) {
        try {
             maCnx=ConnexionBdd.getCnx();
             String maSQL="SELECT secteur.id_sec FROM secteur WHERE secteur.libelle_sec='"+secteur+"'";
@@ -267,19 +262,13 @@ public class FonctionsMetier implements IMetier
             int numLabo = rs.getInt(1);
             rs.close();
             
-            maCnx=ConnexionBdd.getCnx();
-            maSQL="SELECT region.id_region FROM region WHERE region.region_nom='"+region+"'";
-            ps= maCnx.prepareStatement(maSQL);
-            rs=ps.executeQuery();
-            rs.next();
-            int numRegion = rs.getInt(1);
-            rs.close();
+           
             
             maCnx=ConnexionBdd.getCnx();
             maSQL= "UPDATE visiteur SET visiteur.nom_vis='"+nom+"',visiteur.prenom_vis='"+prenom+"',"
                     + "visiteur.adresse_vis='"+adresse+"',visiteur.CP_vis='"+cp+"',visiteur.ville_vis='"+ville+"',"
-                    + "visiteur.dateEmbauche_vis='"+dateEmbauche+"',visiteur.id_sec='"+numSecteur+"',visiteur.id_labo='"+numLabo+"',"
-                    + "visiteur.id_region='"+numRegion+"' WHERE visiteur.id_vis ="+id;
+                    + "visiteur.dateEmbauche_vis='"+dateEmbauche+"',visiteur.id_sec='"+numSecteur+"',visiteur.id_labo='"+numLabo
+                    + "' WHERE visiteur.id_vis ="+id;
             ps= maCnx.prepareStatement(maSQL);
             ps.executeUpdate();
         } catch (SQLException ex) {

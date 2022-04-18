@@ -25,8 +25,7 @@ public class Visiteurs
     private int idLabo;
     private String libelleSecteur;
     private String nomLabo;
-    private int idRegion;
-    private String nomRegion;
+   
     
     /**
      * 
@@ -49,7 +48,7 @@ public class Visiteurs
      * 
      * 2eme constructeur
      */
-    public Visiteurs(int unId,String unNom,String unPrenom,String uneAdresse,int unCP,String uneVille,Date uneDate,String unLibelle,String UnNomLabo,String unNomRegion)
+    public Visiteurs(int unId,String unNom,String unPrenom,String uneAdresse,int unCP,String uneVille,Date uneDate,String unLibelle,String UnNomLabo)
     {
         idVisiteur = unId;
         nomVisiteur = unNom;
@@ -60,7 +59,7 @@ public class Visiteurs
         dateEmbaucheVisiteur = uneDate;
         libelleSecteur = unLibelle;
         nomLabo = UnNomLabo;
-        nomRegion = unNomRegion;
+        
     }
    
     public int getIdVisiteur() {
@@ -174,23 +173,7 @@ public class Visiteurs
     }
 
     
-    public int getIdRegion() {
-        return idRegion;
-    }
-
-    
-    public void setIdRegion(int idRegion) {
-        this.idRegion = idRegion;
-    }
-
-    
-    public String getNomRegion() {
-        return nomRegion;
-    }
-
-    public void setNomRegion(String nomRegion) {
-        this.nomRegion = nomRegion;
-    }
+  
     
     
 }

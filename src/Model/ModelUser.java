@@ -39,10 +39,10 @@ public class ModelUser extends AbstractTableModel{
     
     public void LoadDats10Colonnes(ArrayList<Visiteurs> lesVisiteurs)
     {
-        nomColonnes= new String[]{"id","nom","prenom","adresse","Code Postal","ville","date Embauche","secteur","labo","region"};
+        nomColonnes= new String[]{"id","nom","prenom","adresse","Code Postal","ville","date Embauche","secteur","labo"};
         lignes = new Vector<>();
         for (Visiteurs Vis: lesVisiteurs){
-            lignes.add(new String[]{String.valueOf(Vis.getIdVisiteur()),Vis.getNomVisiteur(),Vis.getPrenomVisiteur(),Vis.getAdresseVisiteur(),String.valueOf(Vis.getCpVisiteur()),Vis.getVilleVisiteur(),String.valueOf(Vis.getDateEmbaucheVisiteur()),Vis.getLibelleSecteur(),Vis.getNomLabo(),Vis.getNomRegion()});
+            lignes.add(new String[]{String.valueOf(Vis.getIdVisiteur()),Vis.getNomVisiteur(),Vis.getPrenomVisiteur(),Vis.getAdresseVisiteur(),String.valueOf(Vis.getCpVisiteur()),Vis.getVilleVisiteur(),String.valueOf(Vis.getDateEmbaucheVisiteur()),Vis.getLibelleSecteur(),Vis.getNomLabo()});
         }
         fireTableDataChanged();
     }

@@ -69,8 +69,6 @@ public class frmVisiteur extends javax.swing.JFrame {
         cbLabo = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         lblGSBF = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        cbRegion = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(236, 241, 250));
@@ -140,9 +138,6 @@ public class frmVisiteur extends javax.swing.JFrame {
         lblGSBF.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblGSBF.setText("GSB France");
 
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("Region");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -179,11 +174,9 @@ public class frmVisiteur extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel8)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel7))
                         .addGap(32, 32, 32)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(cbRegion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cbSecteur, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cbLabo, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(13, 13, 13))
@@ -259,11 +252,7 @@ public class frmVisiteur extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbLabo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(cbRegion, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAnnuler, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnValider, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -302,9 +291,7 @@ public class frmVisiteur extends javax.swing.JFrame {
         {
             cbLabo.addItem(lab.getNomLabo());
         }
-        for (Regions reg:fm.getAllRegions()){
-            cbRegion.addItem(reg.getNomRegion());
-        }
+        
     }//GEN-LAST:event_formWindowOpened
 
     /**
@@ -328,7 +315,7 @@ public class frmVisiteur extends javax.swing.JFrame {
                 {
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                     String date = sdf.format(txtDate.getDate());
-                    fm.InsererVisiteurs(txtNom.getText(), txtPrenom.getText(), txtAdresse.getText(), String.valueOf(txtCP.getText()), txtVille.getText(),date, cbSecteur.getSelectedItem().toString(), cbLabo.getSelectedItem().toString(),cbRegion.getSelectedItem().toString());
+                    fm.InsererVisiteurs(txtNom.getText(), txtPrenom.getText(), txtAdresse.getText(), String.valueOf(txtCP.getText()), txtVille.getText(),date, cbSecteur.getSelectedItem().toString(), cbLabo.getSelectedItem().toString());
                     this.setVisible(false);
                     frmEnregistrementVisiteurSucces frmVisSucc = new frmEnregistrementVisiteurSucces();
                     frmVisSucc.setVisible(true);
@@ -396,10 +383,8 @@ public class frmVisiteur extends javax.swing.JFrame {
     private javax.swing.JButton btnAnnuler;
     private javax.swing.JButton btnValider;
     private javax.swing.JComboBox<String> cbLabo;
-    private javax.swing.JComboBox<String> cbRegion;
     private javax.swing.JComboBox<String> cbSecteur;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

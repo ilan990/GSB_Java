@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Lun 18 Avril 2022 à 10:08
+-- Généré le :  Mar 19 Avril 2022 à 20:50
 -- Version du serveur :  5.7.11
 -- Version de PHP :  7.2.7
 
@@ -127,10 +127,9 @@ CREATE TABLE `travailler` (
 --
 
 INSERT INTO `travailler` (`id_vis`, `date`, `id_region`, `role_tra`) VALUES
-(1, '2022-04-16', 3, 'vendeuse'),
-(2, '2022-04-06', 1, 'Comptable'),
-(8, '2020-04-05', 4, 'gerant'),
-(10, '2020-04-05', 2, 'egerie');
+(4, '2022-04-02', 1, 'testeuse'),
+(4, '2022-04-02', 1, 'vendeuse'),
+(8, '2022-04-02', 1, 'chanteur');
 
 -- --------------------------------------------------------
 
@@ -195,12 +194,6 @@ ALTER TABLE `secteur`
   ADD PRIMARY KEY (`id_sec`);
 
 --
--- Index pour la table `travailler`
---
-ALTER TABLE `travailler`
-  ADD PRIMARY KEY (`id_vis`);
-
---
 -- Index pour la table `visiteur`
 --
 ALTER TABLE `visiteur`
@@ -230,11 +223,6 @@ ALTER TABLE `responsable`
 --
 ALTER TABLE `secteur`
   MODIFY `id_sec` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT pour la table `travailler`
---
-ALTER TABLE `travailler`
-  MODIFY `id_vis` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT pour la table `visiteur`
 --
